@@ -42,9 +42,9 @@ app.get('/location', (request, response) => {
   //  (___/  (___/  (___/  hjw    we arrive here
   console.log('Test one');
 
-      // _      _      _
-    // >(.)__ <(.)__ =(.)__
-    //  (___/  (___/  (___/  hjw    We wrap a try catch, but no 'finally' wich would always execute
+  // _      _      _
+  // >(.)__ <(.)__ =(.)__
+  //  (___/  (___/  (___/  hjw    We wrap a try catch, but no 'finally' wich would always execute
   try{
     let city = request.query.city;
     let info = require('./data/location.json');
@@ -56,19 +56,19 @@ app.get('/location', (request, response) => {
     //i mean, we get Seattle fron the page so we have to be alright
 
     const obj = new Location(city, info);
-        // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-            // _      _      _
+    // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+    // _      _      _
     // >(.)__ <(.)__ =(.)__
     //  (___/  (___/  (___/  hjw  to constructor on line 76
 
 
-        // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-            // _      _      _
+    // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+    // _      _      _
     // >(.)__ <(.)__ =(.)__
     //  (___/  (___/  (___/  hjw    200 means "ok"
     response.status(200).send(obj);
   } catch(error){
-            // _      _      _
+    // _      _      _
     // >(.)__ <(.)__ =(.)__
     //  (___/  (___/  (___/  hjw    Something went wrong: i put int he wrong name or value did not match query
     console.log('something went wrong', error);
