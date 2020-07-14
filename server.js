@@ -47,7 +47,7 @@ app.get('/location', (request, response) => {
   //  (___/  (___/  (___/  hjw    We wrap a try catch, but no 'finally' wich would always execute
   try{
     let city = request.query.city;
-    let info = require('./data/location.json');
+    let geoData = require('./data/location.json');
 
     // _      _      _
     // >(.)__ <(.)__ =(.)__
@@ -55,7 +55,7 @@ app.get('/location', (request, response) => {
     console.log('this is the city: ', city);
     //i mean, we get Seattle fron the page so we have to be alright
 
-    const obj = new Location(city, info);
+    const obj = new Location(city, geoData);
     // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
     // _      _      _
     // >(.)__ <(.)__ =(.)__
@@ -76,13 +76,13 @@ app.get('/location', (request, response) => {
   }
 });
 
-function Location(city, info){
+function Location(city, geoData){
   console.log('city constructor');
 
   this.search_query = city;
-  this.formatted_query = info[0].display_name;
-  this.latitude = info[0].lat;
-  this.longitude = info[0].lon;
+  this.formatted_query = geoData[0].display_name;
+  this.latitude = geoData[0].lat;
+  this.longitude = geoData[0].lon;
 }
 
 //=============================Weather=================================
