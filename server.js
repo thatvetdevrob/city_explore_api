@@ -63,9 +63,9 @@ function Weather(obj) {
 
 //==============================Errors=================================
 
-app.get('*', (request, response) => {
-  response.status(500).send('Sorry, something went terribly wrong: status 500');
-});
+// app.get('*', (request, response) => {
+//   response.status(500).send('Sorry, something went terribly wrong: status 500');
+// });
 
 // ====================================================================
 // Turn on Server and Confirm Port
