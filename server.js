@@ -1,5 +1,7 @@
 'use strict';
 
+console.log('in the server');
+
 const express = require('express');
 
 const app = express();
@@ -18,18 +20,18 @@ const PORT = process.env.PORT || 3001;
 //=============================Location=================================
 
 app.get('/location', (request, response) => {
-
+  console.log('in location');
   try{
     let city = request.query.city;
-    let geoData = require('./data/location.json')
+    let geoData = require('./data/location.json');
 
-    const obj = new Location(city, geoData)
+    const obj = new Location(city, geoData);
     response.status(200).send(obj);
   } catch(error){
     console.log('ERROR', error);
-    response.status(500).send('Sorry, something went terribly wrong');
+    response.status(500).send('Sorry, something went terribly wrong status 500 and first catch');
   }
-})
+});
 
 function Location(city, geoData){
 
@@ -43,16 +45,16 @@ function Location(city, geoData){
 
 app.get('/weather', (request, response) => {
 
-  let weatherData = require('./data/weather.json')
+  let weatherData = require('./data/weather.json');
   let forecastArray = [];
 
   weatherData['data'].forEach(date => {
     forecastArray.push(new Weather(date));
-  })
+  });
 
   response.status(200).send(forecastArray);
 
-})
+});
 
 function Weather(obj) {
   this.forecast = obj.weather.description;
@@ -62,12 +64,12 @@ function Weather(obj) {
 //==============================Errors=================================
 
 app.get('*', (request, response) => {
-  response.status(500).send('Sorry, something went terribly wrong');
-})
+  response.status(500).send('Sorry, something went terribly wrong: status 500');
+});
 
 // ====================================================================
 // Turn on Server and Confirm Port
 
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
-})
+});
